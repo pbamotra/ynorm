@@ -1,0 +1,299 @@
+$heading-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$title-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$body-font:  system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$sans-serif-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+body {
+  font-family: $body-font;
+}
+
+p, li {
+  margin-top: 0px;
+
+  font-family: $body-font;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+
+  line-height: 1.7em;
+
+  @include grid-media($mobile) {
+    font-size: 17px;
+    line-height: 1.6em;
+  }
+}
+
+code {
+  font-family: 'Source Code Pro', monospace, sans-serif;
+}
+
+#main-header li {
+  font-weight: 600;
+}
+
+#site-links li {
+  font-family: $sans-serif-font;
+  font-size: 16px;
+  text-color: $red;
+
+  line-height: 25px;
+}
+
+#introduction {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 40px;
+  margin-bottom: 60px;
+  
+  p {
+    font-family: $title-font;
+    font-weight: 600;
+    font-size: 24px;
+    
+    text-align: center;
+  }
+}
+
+#archive-link {
+    border-top: 1px solid #eee;
+    padding-top: 60px;
+    
+    margin: auto;
+    margin-top: 50px;
+    display: block;
+    
+    text-align: center;
+    
+    a {
+      display: inline-block;
+      margin: auto;
+      font-size: 22px;
+      font-family: $sans-serif-font;
+    }
+}
+
+article {
+  color: $text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $title-font;
+    font-weight: 600;
+
+    code {
+      padding: 0;
+      font-size: 28px;
+      font-weight: 600;
+      border: 0;
+    }
+
+    @include grid-media($mobile) {
+      font-size: 20px;
+      margin-top: 35px;
+    }
+  }
+
+  a {
+    transition: color .15s;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+
+  .article-title {
+    display: block;
+    margin-bottom: 5px;
+    
+    font-weight: 600;
+    font-size: 38px;
+    
+    text-align: center;
+
+    @include grid-media($mobile) {
+      font-size: 30px;
+    }
+  }
+
+  .article-title a {
+    color: $text-color;
+    border-bottom: none;
+
+    line-height: 1.2em;
+
+    transition: color .3s;
+
+    &:hover {
+      border-bottom: 0;
+      color: $link-color;
+    }
+  }
+
+  .tag a {
+    padding: 3px 5px 1px 5px;
+
+    color: $tag-color;
+    border-radius: 4px;
+
+    font-family: $sans-serif-font;
+    font-size: 13px;
+    font-weight: 500;
+
+    border: 1px solid $border-color;
+
+    transition: color .2s;
+
+    &:hover {
+      border: 1px solid darken($border-color, 10%);
+      color: black;
+    }
+  }
+
+  .link {
+    color: $light-text-color;
+
+    @include grid-media($mobile) {
+      padding-bottom: 5px;
+    }
+  }
+
+  .permalink {
+    margin-top: 19px;
+
+    border-bottom: none;
+    font-size: 20px;
+
+    &:hover {
+      border-bottom: none;
+    }
+  }
+
+  @include grid-media($mobile) {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+h1#category-title {
+  margin-bottom: 45px;
+
+  color: $link-color;
+
+  font-size: 30px;
+}
+
+.metadata {
+  color: $light-text-color;
+
+  font-family: $heading-font;
+  font-size: 16px;
+
+  @include grid-media($mobile) {
+    font-size: 14px;
+  }
+}
+
+footer p, footer a {
+  color: $light-text-color;
+
+  font-family: $sans-serif-font;
+  font-size: 14px;
+  line-height: 25px;
+
+  @include grid-media($mobile) {
+    font-size: 15px;
+  }
+}
+
+.blue-button {
+  font-family: $sans-serif-font;
+}
+
+#main-title {
+  font-weight: 600;
+  font-family: $sans-serif-font;
+}
+
+h1, h2, h3, h4 {
+  margin: 50px 0px 10px 0px;
+
+  font-family: $heading-font;
+  font-weight: 400;
+}
+
+h1 {
+  margin-top: 0px;
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+/*
+  We have to tweak the H2 tags in order to get any badges to show correctly.
+  Without floating to the left and setting the width to 100%, badges will be misaligned vertically.
+*/
+.badged-header > h2 {
+  margin-top: 17px;
+
+  display: inline-block;
+  float: left;
+}
+
+p {
+  margin-top: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+
+  border-bottom: 2px solid lighten($yellow, 20%);
+
+  &:hover {
+    border-bottom: 2px solid $link-color;
+  }
+}
+
+blockquote {
+  margin: 30px 0px;
+  padding: 0px 10px;
+
+  border-left: 3px solid $yellow;
+  color: $light-text-color;
+
+  a {
+    color: $light-text-color;
+  }
+}
+
+#main-header a {
+  border-bottom: none;
+  font-size: 15px;
+  color: black;
+
+  &:hover {
+    color: $yellow;
+  }
+}
+
+#main-header .active {
+  color: $yellow;
+}
+
+footer a {
+  transition: color 0.15s ease-out;
+
+  &:hover {
+    color: $text-color;
+  }
+}
+
+// KaTeX Hacks:
+
+.katex .accent .accent-body.accent-vec > span {
+  left: 0em !important;
+}

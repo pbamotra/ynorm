@@ -1,0 +1,13 @@
+$column: 90px;
+$gutter: 20px;
+$grid-columns: 6;
+$max-width: em(760);
+
+$neat-grid: (
+  columns: 6,
+  gutter: 20px
+);
+
+$mobile: (
+  media: "(max-width: 600px)"
+);

@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="author" content="Pankesh Bamotra">
+    <meta name="description" content="Pankesh Bamotra's personal blog on machine learning, statistics, and ramblings about Python programming.">
+    <meta http-equiv="Content-Security-Policy" content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'; font-src 'self' https://* data:">
+
+    <title>KL Divergence | YNorm</title>
+
+    <!-- Load useful CSS -->
+    
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link href="//khan.github.io/KaTeX/bower_components/katex/dist/katex.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Source+Code+Pro" rel="stylesheet">
+    
+    <!-- Load custom fonts -->
+    
+      <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6796156/6463372/css/fonts.css" />
+  </head>
+  
+  <body>
+    <div id="body-container">
+      <div id="header-container" class="background-content">
+        <div class="content">
+          <header id="main-header">
+            <h1 id="main-title"><a href="/">|| y ||</a></h1>
+
+            <nav id="main-navigation">
+              <ul id="site-links">
+                <li><a href="/" target="_self">Home</a></li>
+                <li><a href="/archive/" target="_self">Archive</a></li>
+                <li><a href="https://pnksh.me" target="_blank">PB/Résumé</a></li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="inner-content">
+              <article>
+      <div class="cover-image-container">
+        <img alt="Cover image" src="/images/covers/kldivergence.jpg">
+      </div>
+  <div class="article-header">
+      <h1 class="article-title"><a href="/blog/kl-divergence/">KL Divergence</a></h1>
+
+    <span class="metadata">
+      <time>Published October 12, 2017</time>
+    </span>
+  </div>
+
+  <p>KL divergence is a <a href="https://en.wikipedia.org/wiki/Metric_(mathematics)#Premetrics">premetric</a> that finds its root in information theory. It has a close relationship with <a href="https://en.wiktionary.org/wiki/Shannon_entropy">Shannon entropy</a> and we&rsquo;ll walk through this relationship in the subsequent discussion. In its most basic sense, KL divergence measures the proximity between distributions. When we talk about KL divergence between two distribution say P and Q, it&rsquo;s denoted as</p>
+
+<p>$$D_{KL} \left(P  \Vert  Q\right)$$</p>
+
+<h3 id="mathematical-background">Mathematical background</h3>
+
+<p>
+KL divergence belongs to a class of divergence measures known as <i>f-divergence</i>. For distributions \( P \) and \( Q \) and a convex function \( f(t) \) defined over \( t \gt 0 \) with \( f(1) = 0 \) is given by
+</p>
+
+<p>$$D_{f} \left(P  \Vert Q\right) = Q(t) f\Big(\frac{P(t)}{Q(t)}\Big)$$</p>
+
+<p>
+To derive KL divergence we set \( f(t) = t \ log \left( t \right) \). For \( P(t) = Q(t) = 0 \), f-divergence is taken as zero. As per literature, KL divergence \( D_{KL} \left(P  \Vert  Q\right) \) requires P to be <i>absolute continuous</i>. Mathematically, this would mean KL divergence is undefined when for any t, P(t) \( \neq \) 0 but Q(t) = 0. An intuitive explanation for this will be presented later.
+</p>
+
+<p>
+Three important properties of KL divergence are:-
+<ul>
+    <li> \( D_{KL} \left(P  \Vert  Q\right) \geq 0 \) . The equality happens when P = Q everywhere. This is known as Gibbs inequality. </li>
+    <li> In general, \( D_{KL} \left(P  \Vert  Q\right) \neq D_{KL} \left(Q  \Vert  P\right) \). That means KL divergence is not symmetric and hence is not a metric/distance measure. </li>
+    <li> KL divergence doesn&rsquo;t obey triangle inequality. </li>
+</ul>
+</p>
+
+<h3 id="shannon-entropy">Shannon entropy</h3>
+
+<p>
+In computer science theory, entropy is one of the most studied topics. Thanks to Claude Shannon who gave us Shannon entropy. For a random variable \( X \) with PMF \( P(X) \), Shannon entropy is defined as
+</p>
+
+<p>
+\[ H(X) = - \sum_{x}P(x)log_{2}\left(P(x)\right) \]
+</p>
+
+<p>Intuitively, entropy gives us the lower bound on the number of bits required to optimally encode each observation of x <sup id="fnref1"><a href="#fn1">1</a></sup>. However, it must be kept in mind that we don&rsquo;t get to know what the optimal encoding is! The choice of use logarithm base 2 comes from information theory literature leading to entropy&rsquo;s unit as bits.</p>
+
+<h3 id="kl-divergence-and-its-relationship-with-entropy">KL divergence and its relationship with entropy</h3>
+
+<p>
+We saw that KL divergence is defined as \( D_{KL} \left(P  \Vert  Q\right) = \sum_{x} P(x) log \Big( \frac{ P(x) }{ Q(x) } \Big) \). Let&rsquo;s rewrite this by expanding the log term. We get,
+</p>
+
+<p>
+\[
+\begin{aligned}
+D_{KL} \left(P  \Vert Q\right) &= \sum_{x} P(x) log\Big(\frac{P(x)}{Q(x)}\Big) \\
+&= \sum_{x} P(x) log(P(x)) - \sum_{x} P(x) log(Q(x)) \\
+&= -H(X) + H(P, Q)
+\end{aligned}
+\]
+</p>
+
+<p>
+The two terms in the final step are well known. \( H(X) \) is the Shannon entropy which we described in the previous section. \( H(P, Q) \) is, yeah you probably guessed it, cross-entropy. Using Gibbs inequality, we can say that cross entropy is always greater than or equal to the corresponding Shannon entropy. 
+</p>
+
+<p>
+Now, we describe KL divergence in terms of Shannon entropy and cross-entropy. Shannon entropy as we said above is the minimum number of bits required to optimally encode a distribution. Cross-entropy \( H(P, Q) \) on the other hand is the number of bits required to encode distribution P using an encoding that&rsquo;s optimal for distribution \( Q \) but not for \( P \). Consequently, KL divergence is the expected number of extra bits that are used under this sub-optimal encoding. 
+</p>
+
+<p>
+Let&rsquo;s revisit the discussion on why we require P to be <i>absolute continuous</i>. Having \( Q(x) = 0 \) when \( P(x) \neq 0 \) would mean that we&rsquo;re trying to approximate a <i>probable</i> event with something that&rsquo;s definitely not going to happen. So, when such an event happens (in distribution P), KL divergence would essentially diverge logarithmically. In other words, the sub-optimal encoding has no way to encode such an event! So, KL divergence is undefined in such a case.
+</p>
+
+<h3 id="treading-to-machine-learning-domain">Treading to machine learning domain</h3>
+
+<p>In most of the ML algorithms, we resort to optimising cross entropy and not KL divergence because the Shannon entropy term is independent of the model parameters and acts like a constant when taking derivative of log-likelihood. In fact, it can be shown that minimizing KL divergence is equivalent to minimizing negative log-likelihood.</p>
+
+<p>
+Let \( P = p\left(x \vert \theta^{*}\right) \) be the true data distribution and model distribution be  \( Q = p\left(x \vert \theta \right) \). Then by definition of KL divergence,
+</p>
+
+<p>
+\[
+\begin{aligned}
+D_{KL}[P(x \vert \theta^*) \, \Vert \, P(x \vert \theta)] &= \mathbb{E}_{x \sim P(x \vert \theta^*)}\left[\log \frac{P(x \vert \theta^*)}{P(x \vert \theta)} \right] \\
+&= \mathbb{E}_{x \sim P(x \vert \theta^*)}\left[\log \, P(x \vert \theta^*) - \log \, P(x \vert \theta) \right] \\
+&= H(X) - \mathbb{E}_{x \sim P(x \vert \theta^*)}\left[\log \, P(x \vert \theta) \right]
+\end{aligned}
+\]
+</p>
+
+<p>
+For a large number of samples drawn from the true distribution we have \( \frac{1}{N} \sum_x \log \, P(x \vert \theta) = \mathbb{E}_{x \sim P(x \vert \theta^*)}\left[\log \, P(x \vert \theta) \right] \) using the law of large numbers. Left-hand side in the equation represents log-likelihood of data samples. Comparing this result with the derivation above we can conclude that minimizing KL divergence is equivalent to minimizing negative log-likelihood.
+</p>
+
+<p>These results have been used in variational inference theory and the most recent examples are Variational Autoencoders. The discussion about VAEs is reserved for another post. But you can read about them in this <a href="https://arxiv.org/pdf/1606.05908.pdf">Tutorial on Variational Autoencoders</a> by <a href="http://www.carldoersch.com/">Carl Doersch</a>.</p>
+
+<p><sub>Cover credit: <a href="https://www.flickr.com/photos/shonk/7537733822/">shonk</a> via <a href="https://visualhunt.com/re/59119f">Visual Hunt</a> / <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/"> CC BY-NC-ND</a></sub></p>
+
+<div class="footnotes">
+<hr>
+<ol>
+
+<li id="fn1">
+<p><a href="http://www.cs.cmu.edu/~venkatg/teaching/ITCS-spr2013/notes/15359-2009-lecture25.pdf">CMU 15-359: Elements of Information Theory</a>&nbsp;<a href="#fnref1">&#8617;</a></p>
+</li>
+
+</ol>
+</div>
+
+
+    <ul class="tags">
+        <li class='tag'><a href='/tags/machine-learning/'>MACHINE LEARNING</a></li>
+        <li class='tag'><a href='/tags/statistics/'>STATISTICS</a></li>
+    </ul>
+</article>
+
+
+
+          <footer>
+            <p id="footer-details">YNorm &bull; 2017 <br/>
+                <span>
+                    Pankesh Bamotra &bull;
+                    <a href="https://github.com/pbamotra"><i class="fa fa-github"></i></a> &bull;
+                    <a href="https://twitter.com/_pbamotra_"><i class="fa fa-twitter"></i></a>
+                </span>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="//khan.github.io/KaTeX/bower_components/katex/dist/katex.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha1/contrib/auto-render.min.js" integrity="sha384-cXpztMJlr2xFXyDSIfRWYSMVCXZ9HeGXvzyKTYrn03rsMAlOtIQVzjty5ULbaP8L" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
+        });
+    </script>
+      
+    <script src="/javascripts/highlight.min.js"></script>
+    
+    <!-- Activate syntax highlighting -->
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    </script>
+  </body>
+</html>

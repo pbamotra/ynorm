@@ -1,0 +1,11 @@
+---
+pageable: true
+---
+
+<div id="articles">
+  <% page_articles[0...5].each do |current_article| %>
+    <%= partial('/layouts/partials/article-preview', :locals => { :article => current_article }) %>
+  <% end %>
+</div>
+
+<span id="archive-link"><%= navigation_link_to 'Looking for more? Check out the archive!', '/archive/' %></span>

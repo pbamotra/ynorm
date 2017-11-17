@@ -1,0 +1,36 @@
+.badge {
+  padding: 2px 6px;
+
+  background-color: #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+
+  font: bold 12px "Helvetica Neue";
+
+  text-transform: uppercase;
+}
+
+.badged-header > .badge {
+  float: left;
+
+  margin-top: 26px;
+  margin-left: 10px;
+
+  @include grid-media($mobile) {
+    margin-top: 21px;
+  }
+}
+
+.blue {
+  background-color: #0079F3;
+  color: white;
+}
+
+.red {
+  background-color: #FF3939;
+  color: white;
+}
+
+.archive-badge {
+  margin-left: 5px;
+}
