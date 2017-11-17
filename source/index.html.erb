@@ -8,4 +8,6 @@ pageable: true
   <% end %>
 </div>
 
+<% if blog.articles.count > 5 %>
 <span id="archive-link"><%= navigation_link_to 'Looking for more? Check out the archive!', '/archive/' %></span>
+<% end %>

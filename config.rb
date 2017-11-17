@@ -56,6 +56,8 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
+activate :sitemap, :gzip => false, :hostname => "https://ynorm.com"
+
 configure :build do
   activate :minify_css
 end
