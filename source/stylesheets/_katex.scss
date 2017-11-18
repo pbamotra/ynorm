@@ -1,8 +1,11 @@
+::-webkit-scrollbar {
+    display: none;
+}
 .katex-display > .katex {
   display: inline-block;
   white-space: nowrap;
   max-width: 100%;
-  overflow: hidden;
+  overflow: auto;
   text-align: initial;
 }
 .katex {
