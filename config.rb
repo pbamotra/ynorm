@@ -60,6 +60,7 @@ activate :sitemap, :gzip => false, :hostname => "https://ynorm.com"
 
 configure :build do
   activate :minify_css
+  activate :minify_javascript
 end
 
 # Font Management

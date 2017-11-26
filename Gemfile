@@ -13,3 +13,6 @@ gem 'builder', '~> 3.2.0'
 
 gem 'bourbon'
 gem 'neat'
+
+gem 'therubyracer'
+gem 'oj'
