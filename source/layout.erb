@@ -49,10 +49,12 @@
 
             <nav id="main-navigation">
               <ul id="site-links">
-                <li><%= navigation_link_to 'Home', '/' %></li>
-                <li><%= navigation_link_to 'Archive', '/archive/' %></li>
-                <li><%= navigation_link_to 'Fav <span style="color:red">♥</span>', '/favorites/' %></li>
-                <li><%= navigation_link_to 'Résumé', 'https://pnksh.me', '_blank' %></li>
+                <li><%= navigation_link_to '<i class="fa fa-home" aria-hidden="true"></i>', '/' %></li>
+                <li><%= navigation_link_to '<span style="color:#2BCE88"><i class="fa fa-archive" aria-hidden="true"></i></span>', '/archive/' %></li>
+                <li><%= navigation_link_to '<span style="color:red"><i class="fa fa-heart" aria-hidden="true"></i>
+</span>', '/favorites/' %></li>
+                <li><%= navigation_link_to '<span style="color:#4885ed"><i class="fa fa-twitter" aria-hidden="true"></i></span>', '/twitter/' %></li>
+                <li><%= navigation_link_to '<i class="fa fa-file-text" aria-hidden="true"></i> CV', 'https://pnksh.me', '_blank' %></li>
               </ul>
             </nav>
           </header>
