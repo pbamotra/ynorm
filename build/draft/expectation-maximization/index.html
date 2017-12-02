@@ -85,7 +85,7 @@ This article is about the Expectation Maximization algorithm and the guarantees 
 <h3 id="how-em-differs-from-mle">How EM differs from MLE?</h3>
 
 <p>
-Given the observed data \( \mathcal{y} \) with density \( P ( y \vert \theta ) \) for \( \theta \in \Omega \). For MLE, given only \( \mathcal{y} \) we solve parameter estimation as,
+Given the observed data \( \mathcal{y} \) with density \( P ( y \vert \theta ) \) for \( \theta \in \Omega \). For MLE, using only \( \mathcal{y} \) we solve parameter estimation as,
 </p>
 
 <p>
@@ -133,7 +133,7 @@ algorithm?</a>
 
 <p>
 Consider a simple coin-flipping experiment in which we are given a pair of coins A and B of unknown biases, \( \theta_{A} \) and
-\( \theta_{B} \), respectively (that is, on any given flip, coin A will land on heads with probability \( \theta_{A} \) and tails with probability 1 – \( \theta_{A} \) and similarly for coin B). Our goal is to estimate \( \theta \) = (\( \theta_{A} \), \( \theta_{A} \)) by repeating the following procedure five times: randomly choose one of the two coins (with equal probability), and perform ten independent coin tosses with the selected coin. Thus, the entire procedure involves a total of 50 coin tosses. 
+\( \theta_{B} \), respectively (that is, on any given flip, coin A will land on heads with probability \( \theta_{A} \) and tails with probability 1 – \( \theta_{A} \) and similarly for coin B). Our goal is to estimate \( \theta \) = (\( \theta_{A} \), \( \theta_{B} \)) by repeating the following procedure five times: randomly choose one of the two coins (with equal probability), and perform ten independent coin tosses with the selected coin. Thus, the entire procedure involves a total of 50 coin tosses. 
 </p>
 
 <div class="svg-container">
@@ -289,7 +289,8 @@ Now let&rsquo;s define our EM steps for this problem: -
     \( \sum_{j} h_j (1 - P_{j}) = 11.76 \) <br/>
     <br/>
     Substituting into eq. 1 and eq. 2, we get <br/>
-    \( \theta^{(1)}_{A} = 0.71 \text{ and } \theta^{(1)}_{B} = 0.58 \)
+    \( \theta^{(1)}_{A} = 0.71 \text{ and } \theta^{(1)}_{B} = 0.58 \).<br/>
+    After 10 iterations, the algorithm will converge to \( \theta^{(1)}_{A} = 0.80 \text{ and } \theta^{(1)}_{B} = 0.52 \).
     <br/>
     Note: Some values are a little off from the ones in the figure 1 due of rounding off.
     </li>
@@ -314,14 +315,23 @@ with \( \mathcal{X} (y) \neq \emptyset, \theta \geq (\theta^{(m)}) \) if \( Q(\t
 <div class="svg-container">
     <figure class="caption">
         <img src="/images/article_imgs/em/em.png" alt="EM monotonicity"></img>
-        <figcaption>Source: Sean Borman, EM Tutorial<sup id="fnref2"><a href="#fn2">2</a></sup> </figcaption>
+        <figcaption>Inspired by: Sean Borman, EM Tutorial<sup id="fnref2"><a href="#fn2">2</a></sup> </figcaption>
     </figure> 
-</div></p>
+</div>
+<br/></p>
 
 <p>
-The expectation maximization algorithm during the E-step, choose the Q-function such that it lower bounds \( \text{log } P(x; \theta) \) everywhere, and for which \( Q(\theta^{(m)} \vert \theta^{(m)}) \) = \(\text{log } P(x; \theta^{(m)}) \). During the M-step, the algorithm moves
-to a new parameter set \( \theta^{(m+1)} \) that maximizes Q. 
+The expectation maximization algorithm during the E-step, choose the Q-function such that it lower bounds \( \text{log } P(x; \theta) \) everywhere, and for which \( Q(\theta^{(m)} \vert \theta^{(m)}) \) = \(\text{log } P(x; \theta^{(m)}) \). During the M-step, the algorithm moves to a new parameter set \( \theta^{(m+1)} \) that maximizes \( Q \). The proof for this can be found in <a href="/blog/expectation-maximization#fn2">[2 - Page 6]</a>. In other words, EM tries to maximize the lower bound given by Q-function using co-ordinate ascent<sup><a href="/blog/expectation-maximization#fn3">3</a></sup>.
 </p>
+
+<p><span style="display:none"><sup id="fnref3"><a href="#fn3">3</a></sup><sup id="fnref4"><a href="#fn4">4</a></sup></span>
+<br/></p>
+
+<p>
+Theoretically, EM provides linear convergence but it is not guaranteed to find global optima. Thus, it is common to run EM with different initialisations of the parameters \( \theta \) and choose the results that correspond to largest likelihood value. Other methods like Newton-Raphson can be used to find optimal parameters with sublinear convergence but Hessian computation for such methods would be another challenge. EM equips us with a simple and robust tool that is effective in case of poor initial guesses. Such poor guesses may lead to unstable inversions in Hessian based methods.
+</p>
+
+<p><br/></p>
 
 <div class="footnotes">
 <hr>
@@ -332,7 +342,15 @@ to a new parameter set \( \theta^{(m+1)} \) that maximizes Q.
 </li>
 
 <li id="fn2">
-<p><a href="http://www.seanborman.com/publications/EM_algorithm.pdf">Borman, The Expectation Maximization Algorithm</a>&nbsp;<a href="#fnref2">&#8617;</a></p>
+<p><a href="http://www.seanborman.com/publications/EM_algorithm.pdf">Borman S., The Expectation Maximization Algorithm</a>&nbsp;<a href="#fnref2">&#8617;</a></p>
+</li>
+
+<li id="fn3">
+<p><a href="https://www.cs.cmu.edu/~awm/15781/assignments/EM.pdf">Singh A., The EM Algorithm</a>&nbsp;<a href="#fnref3">&#8617;</a></p>
+</li>
+
+<li id="fn4">
+<p><a href="https://github.com/greeness/EM-Tutorial/blob/master/document.pdf">greeness, Expectation Maximization</a>&nbsp;<a href="#fnref4">&#8617;</a></p>
 </li>
 
 </ol>
