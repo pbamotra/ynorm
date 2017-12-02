@@ -13,6 +13,9 @@
     <loc>https://ynorm.com/blog/mle-fisher</loc>
   </url>
   <url>
+    <loc>https://ynorm.com/blog/expectation-maximization</loc>
+  </url>
+  <url>
     <loc>https://ynorm.com/favorites</loc>
   </url>
   <url>
@@ -26,6 +29,9 @@
   </url>
   <url>
     <loc>https://ynorm.com/tags/machine-learning</loc>
+  </url>
+  <url>
+    <loc>https://ynorm.com/tags/expectation-maximization</loc>
   </url>
   <url>
     <loc>https://ynorm.com/tags/statistics</loc>

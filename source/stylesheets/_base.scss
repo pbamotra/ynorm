@@ -34,3 +34,27 @@
 .archive-badge {
   margin-left: 5px;
 }
+
+img {
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* Correct overflow not hidden in IE9 */
+svg:not(:root) { overflow: hidden; }
+
+figure {
+    text-align: center;
+}
+
+figure img {
+    vertical-align: middle;
+    display:block;
+    margin:auto;
+}
+
+figure figcaption {
+    font-variant: small-caps;
+    text-align: center;
+    margin-top: -1em;
+}
