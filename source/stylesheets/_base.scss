@@ -60,9 +60,9 @@ figure figcaption {
 }
 
 @media screen and (min-width: 0px) and (max-width: 400px) {
-  #screen-rotate { display: block; }  /* show it on small screens */
+  .screen-rotate { display: block; }  /* show it on small screens */
 }
 
 @media screen and (min-width: 401px){
-  #screen-rotate { display: none; }   /* hide it elsewhere */
+  .screen-rotate { display: none; }   /* hide it elsewhere */
 }
