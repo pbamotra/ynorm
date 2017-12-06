@@ -11,6 +11,12 @@ The chapter is a self-contained resource and I've highlighed a few places that n
 
 <br/>
 
+<div class="screen-rotate">
+    <img src="/images/screen-rotate.svg" alt="Rotate screen" width="32px" height="32px"></img>
+    <div style="display:none;">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+    <br/>
+</div>
+
 <div id="wrapper">
 <!DOCTYPE html>
 <!-- Created by pdf2htmlEX (https://github.com/coolwanglu/pdf2htmlex) -->
