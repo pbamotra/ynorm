@@ -16,6 +16,9 @@
     <loc>https://ynorm.com/blog/expectation-maximization</loc>
   </url>
   <url>
+    <loc>https://ynorm.com/blog/hmm</loc>
+  </url>
+  <url>
     <loc>https://ynorm.com/favorites</loc>
   </url>
   <url>
@@ -29,6 +32,12 @@
   </url>
   <url>
     <loc>https://ynorm.com/tags/machine-learning</loc>
+  </url>
+  <url>
+    <loc>https://ynorm.com/tags/sequential-models</loc>
+  </url>
+  <url>
+    <loc>https://ynorm.com/tags/automatic-speech-recognition</loc>
   </url>
   <url>
     <loc>https://ynorm.com/tags/expectation-maximization</loc>
