@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="author" content="Pankesh Bamotra">
+    <meta name="description" content="YNorm || y || - Pankesh Bamotra's personal blog on machine learning, statistics, and ramblings about Python programming.">
+    <meta name="google-site-verification" content="gOgaM4dnfNijpSpdApTBA1oNkmE47-F0GUNZR8lonu4" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed.xml">
+
+      
+    <title>Readings on text classification | YNorm</title>
+    
+    <!-- icons -->
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+    <meta name="theme-color" content="#00f0ff">
+    <meta name="msapplication-TileColor" content="#00f0ff">
+    <meta name="msapplication-TileImage" content="/images/mstile-310x310.png">
+    <!-- /icons -->
+
+    <!-- og tags -->
+    <meta property="og:site_name" content="|| y ||">
+    <meta property="og:title" content="|| y ||">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ynorm.com/">
+    <meta property="og:description" content="YNorm || y || - Pankesh Bamotra's personal blog on machine learning, statistics, and ramblings about Python programming.">
+    <!-- /og tags -->
+      
+    <!-- Load useful CSS -->
+    
+    <link href="/stylesheets/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Source+Code+Pro" rel="stylesheet">
+  </head>
+  
+  <body>
+    <div id="body-container">
+      <div id="header-container" class="background-content">
+        <div class="content">
+          <header id="main-header">
+            <h1 id="main-title"><a href="/">|| y ||</a></h1>
+
+            <nav id="main-navigation">
+              <ul id="site-links">
+                <li><a href="/" target="_self"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li><a href="/archive/" target="_self"><span style="color:#2BCE88"><i class="fa fa-archive" aria-hidden="true"></i></span></a></li>
+                <li><a href="/favorites/" target="_self"><span style="color:red"><i class="fa fa-heart" aria-hidden="true"></i>
+</span></a></li>
+                <li><a href="/twitter/" target="_self"><span style="color:#4885ed"><i class="fa fa-twitter" aria-hidden="true"></i></span></a></li>
+                <li><a href="https://pnksh.me" target="_blank"><i class="fa fa-file-text" aria-hidden="true"></i> CV</a></li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="inner-content">
+              <article>
+  <div class="article-header">
+      <h1 class="article-title"><a href="/blog/readings-text-classification/">Readings on text classification</a></h1>
+
+    <span class="metadata">
+      <time>Published April 23, 2018</time>
+    </span>
+  </div>
+
+  <p>
+At my work, I&rsquo;ve been actively working on text classification problems. I began with simple Random Forest based model and now switched using a hierarchical deep neural network for a domain specific problem. Meanwhile, I&rsquo;ve been investigating a number of approaches which I&rsquo;ve tested empirically and seem to work at large scale. Here are a few papers worth mentioning.
+</p>
+
+<p><br/>
+<ul>
+<li>Yoon Kim, Convolutional Neural Networks for sentence classification <a href="https://arxiv.org/abs/1408.5882" target="_blank">[arXiv:1408.5882]</a></li>
+<li>Yang et. al., Hierarchical Attention Networks for Document Classification <a href="https://www.cs.cmu.edu/~./hovy/papers/16HLT-hierarchical-attention-networks.pdf" target="_blank">[CMU link]</a></li>
+<li>Liu et. al, Deep Learning for Extreme Multi-label Text Classification <a href="https://dl.acm.org/citation.cfm?id=3080834" target="_blank">[ACM]</a></li>
+<li>Johnson et. al., Deep Pyramid Convolutional Neural Networks for Text Categorization <a href="http://ai.tencent.com/ailab/media/publications/ACL3-Brady.pdf" target="_blank">[Tencent AI]</a></li>
+</ul>
+<br/></p>
+
+<p>
+Until now, for my case, Kim&rsquo;s CNN approach has been the fastest approach in terms of training for me. This gives approximately the same accuracy as a hierarchical deep neural network that I trained earlier. Probably, the next thing I&rsquo;m going to try is to add attention mechanism to improve the accuracy of the overall model.
+</p>
+
+
+    <ul class="tags">
+        <li class='tag'><a href='/tags/machine-learning/'>MACHINE LEARNING</a></li>
+        <li class='tag'><a href='/tags/text-classification/'>TEXT CLASSIFICATION</a></li>
+    </ul>
+</article>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://ynorm.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>  
+
+
+
+          <footer>
+            <p id="footer-details">YNorm &bull; 2017 <br/>
+                <span>
+                    Pankesh Bamotra &bull;
+                    <a href="https://github.com/pbamotra"><i class="fa fa-github"></i></a> &bull;
+                    <a href="https://twitter.com/_pbamotra_"><i class="fa fa-twitter"></i></a>
+                </span>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0-alpha1/contrib/auto-render.min.js" integrity="sha384-cXpztMJlr2xFXyDSIfRWYSMVCXZ9HeGXvzyKTYrn03rsMAlOtIQVzjty5ULbaP8L" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
+        });
+    </script>
+      
+    <script src="/javascripts/highlight.min.js"></script>
+    <!-- Activate syntax highlighting -->
+    <script>hljs.initHighlightingOnLoad();</script>
+    </script>
+  </body>
+</html>

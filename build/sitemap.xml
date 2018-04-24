@@ -19,6 +19,9 @@
     <loc>https://ynorm.com/blog/hmm</loc>
   </url>
   <url>
+    <loc>https://ynorm.com/blog/readings-text-classification</loc>
+  </url>
+  <url>
     <loc>https://ynorm.com/favorites</loc>
   </url>
   <url>
@@ -32,6 +35,9 @@
   </url>
   <url>
     <loc>https://ynorm.com/tags/machine-learning</loc>
+  </url>
+  <url>
+    <loc>https://ynorm.com/tags/text-classification</loc>
   </url>
   <url>
     <loc>https://ynorm.com/tags/sequential-models</loc>
