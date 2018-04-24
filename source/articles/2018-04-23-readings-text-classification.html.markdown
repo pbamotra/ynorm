@@ -4,7 +4,7 @@ date: 2018-04-23 12:00 UTC
 tags: machine learning, text classification
 ---
 <p>
-At my work, I've been actively working on text classification problems. I began with simple Random Forest based model and now switched using a hierarchical deep neural network for a domain specific problem. Meanwhile, I've been investigating a number of approaches which I've tested empirically and seem to work at large scale. Here are a few papers worth mentioning.
+At my work, I've been actively working on text classification problems. I began with simple Random Forest based model and now switched to using a hierarchical deep neural network for a domain specific problem. Meanwhile, I've been investigating a number of approaches which I've tested empirically and seem to work at large scale. Here are a few papers worth mentioning.
 </p>
 <br/>
 <ul>
